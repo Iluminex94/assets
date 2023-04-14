@@ -1,0 +1,28 @@
+# Ten przepływ pracy zbuduje projekt golang
+# Aby uzyskać więcej informacji, zobacz: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+imię: Idź
+
+na:
+  pchać:
+    oddziały: [ „master” ]
+  pull_request:
+    oddziały: [ „master” ]
+
+praca:
+
+  budować:
+    run-on: ubuntu-latest
+    kroki:
+    - używa: akcji / kasy @ v3
+
+    - imię: Skonfiguruj Go
+      używa: akcji / setup-go @ v3
+      z:
+        wersja go: 1.19
+
+    - nazwa: Zbuduj
+      run: go build -v ./...
+
+    - imię: test
+      bieg: idź test -v ./...
